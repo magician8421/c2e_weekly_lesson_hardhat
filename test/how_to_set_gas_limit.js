@@ -7,12 +7,8 @@ describe("GAS LIMIT TEST", function () {
     gasTest = await GasTest.deploy();
     gasTest.waitForDeployment();
   });
+
   it("execute", async function () {
-    const options = { gasLimit: 21064 };
-    try {
-      await gasTest.execute(options);
-    } catch (e) {
-      e.message.includes("Transaction ran out of gas");
-    }
+    await gasTest.execute({ gasLimit: 81064 });
   });
 });

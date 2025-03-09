@@ -15,6 +15,9 @@ module.exports = {
     // Obtain one at https://etherscan.io/
     apiKey: "FRQW8BE23PD7Y7RAH3EM9P3PIPXE3KRJTG",
   },
+  gasReporter: {
+    enabled: true, //是否打开gas reporter
+  },
   networks: {
     //localhost
     sepolia: {
@@ -25,12 +28,13 @@ module.exports = {
       url: "https://eth-mainnet.g.alchemy.com/v2/I3eHFhWUQaZueOZP5BPt3jdFLebK9aEe",
       accounts: [process.env.PRIVATE_KEY],
     },
+
     hardhat: {
-      gas: "auto",
-      mining: {
-        auto: false,
-        interval: 0,
-      },
+      // gas: "auto",
+      // mining: {
+      //   auto: false,
+      //   interval: 0,
+      // },
     },
   },
 };

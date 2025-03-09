@@ -5,7 +5,7 @@ const hre = require("hardhat");
  * 第二步：添加require("hardhat-gas-reporter")到hardhat.config中
  */
 describe("GasGolf", function () {
-  it("V1", async function () {
+  it("GAS REPORT", async function () {
     let GasGolf = await hre.ethers.getContractFactory("GasGolf");
     gasGolf = await GasGolf.deploy();
     await gasGolf.waitForDeployment();
