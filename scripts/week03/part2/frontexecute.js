@@ -11,6 +11,7 @@ async function demostrateFrontRunning() {
     "FrontRunningDemo"
   );
   let frontRunningDemo = await frontRunningDemoContract.deploy();
+  await ethers.provider.send("evm_mine", []);
   await frontRunningDemo.waitForDeployment();
   let [owner, attacker] = await ethers.getSigners();
 
@@ -37,7 +38,7 @@ async function demostrateFrontRunning() {
       maxPriorityFeePerGas: 3000000,
     });
     // Mine all the transactions
-    await ethers.provider.send("evm_mine", []);
+
     throw new Error("Owner's transaction did not fail as expected");
   } catch (error) {
     if (
@@ -48,9 +49,11 @@ async function demostrateFrontRunning() {
       console.log("Owner's transaction failed as expected");
     }
   }
+  await ethers.provider.send("evm_mine", []);
   // Check order of transactions
   const transactions = await frontRunningDemo.getTransactions();
   console.log(transactions.length);
+  console.log(attacker.address);
   console.log(transactions[0].user); // Only attacker's transaction should have succeeded
 }
 demostrateFrontRunning();

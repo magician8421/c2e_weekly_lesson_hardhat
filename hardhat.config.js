@@ -26,9 +26,10 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY],
     },
     hardhat: {
+      gas: "auto",
       mining: {
         auto: false,
-        interval: 1000,
+        interval: 0,
       },
     },
   },
