@@ -1,5 +1,9 @@
 const hre = require("hardhat");
 
+/**
+ * 第一步：安装依赖`npm install --save-dev hardhat-gas-reporter`
+ * 第二步：添加require("hardhat-gas-reporter")到hardhat.config中
+ */
 describe("GasGolf", function () {
   it("V1", async function () {
     let GasGolf = await hre.ethers.getContractFactory("GasGolf");

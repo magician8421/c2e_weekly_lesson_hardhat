@@ -1,6 +1,6 @@
 const hre = require("hardhat");
 
-describe("GAS TEST", function () {
+describe("GAS LIMIT TEST", function () {
   let gasTest;
   this.beforeEach(async function () {
     const GasTest = await hre.ethers.getContractFactory("GasLimitTest");
