@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 contract VulnerableBank{
 
 
-    mapping(address=>uint256) balance;
+    mapping(address=>uint256) public balance;
     function deposit() external payable  {
         balance[msg.sender]+=msg.value;
 
@@ -34,7 +34,7 @@ contract Hack{
 
     function hack() external  payable {
 
-        bank.deposit{value:1 ether}();
+        bank.deposit{value:msg.value}();
         bank.withdraw();
 
     }
