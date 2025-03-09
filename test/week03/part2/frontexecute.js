@@ -1,6 +1,9 @@
 const { ethers } = require("hardhat");
 const { expect } = require("chai");
 
+/**
+ * 运行此程序记住关闭hardhat automin能力
+ */
 describe("front running test", function () {
   it("should execute a front-running attack", async function () {
     let frontRunningDemoContract = await ethers.getContractFactory(
