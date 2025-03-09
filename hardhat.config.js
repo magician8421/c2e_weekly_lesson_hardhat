@@ -9,7 +9,7 @@ setGlobalDispatcher(proxyAgent);
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.27",
+  solidity: "0.8.26",
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
