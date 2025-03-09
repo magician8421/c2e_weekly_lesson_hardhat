@@ -15,7 +15,7 @@ async function execute() {
   });
 
   let tx2 = await demo.set(2, {
-    maxPriorityFeePerGas: 9000000,
+    maxPriorityFeePerGas: 3000000,
   });
   await ethers.provider.send("evm_mine", []);
   console.log(await tx1.wait());
