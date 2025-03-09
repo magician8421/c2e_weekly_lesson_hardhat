@@ -1,19 +1,22 @@
 const { ethers } = require("hardhat");
 
+/**
+ * 需要关闭automine模式
+ */
 async function execute() {
   const _contract = await ethers.getContractFactory("Demo");
   const demo = await _contract.deploy(1);
   await demo.waitForDeployment();
-  let tx = await demo.inc();
-  let recipt = await tx.wait();
-  console.log(recipt);
-  console.log(await demo.i());
+  let tx1 = await demo.inc(1);
+
   let feedData = await ethers.provider.getFeeData();
-  tx = await demo.inc({
+  let tx2 = await demo.inc(2, {
     maxPriorityFeePerGas: feedData.maxPriorityFeePerGas * 5n,
   });
-  recipt = await tx.wait();
+
+  let recipt = await tx2.wait();
   console.log(recipt);
-  console.log(await demo.i());
+  recipt = await tx1.wait();
+  console.log(recipt);
 }
 execute();
