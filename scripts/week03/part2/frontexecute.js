@@ -6,6 +6,7 @@ const { expect } = require("chai");
  */
 
 async function demostrateFrontRunning() {
+  await network.provider.send("evm_mine"); // 手动挖矿
   let frontRunningDemoContract = await ethers.getContractFactory(
     "FrontRunningDemo"
   );
@@ -22,22 +23,21 @@ async function demostrateFrontRunning() {
   // Attacker B front-runs User A
 
   // User A submits their transaction, which should fail
+  let tx1;
+  let tx2;
 
+  // Attacker B front-runs User A
+  await frontRunningDemo.connect(attacker).submitTransaction(attackerAmount, {
+    maxPriorityFeePerGas: 7000000,
+  });
+
+  // User A submits their transaction, which should fail
   try {
-    let tx1 = await frontRunningDemo
-      .connect(owner)
-      .submitTransaction(ownerAmount, {
-        maxPriorityFeePerGas: 1000000,
-      });
-
-    let tx2 = await frontRunningDemo
-      .connect(attacker)
-      .submitTransaction(attackerAmount, {
-        maxPriorityFeePerGas: 3000000,
-      });
-
-    await tx1.wait();
-    await tx2.wait();
+    await frontRunningDemo.connect(owner).submitTransaction(ownerAmount, {
+      maxPriorityFeePerGas: 3000000,
+    });
+    // Mine all the transactions
+    await ethers.provider.send("evm_mine", []);
     throw new Error("Owner's transaction did not fail as expected");
   } catch (error) {
     if (
@@ -48,9 +48,9 @@ async function demostrateFrontRunning() {
       console.log("Owner's transaction failed as expected");
     }
   }
-
   // Check order of transactions
   const transactions = await frontRunningDemo.getTransactions();
   console.log(transactions.length);
   console.log(transactions[0].user); // Only attacker's transaction should have succeeded
 }
+demostrateFrontRunning();

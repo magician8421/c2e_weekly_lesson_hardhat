@@ -5,18 +5,23 @@ const { ethers } = require("hardhat");
  */
 async function execute() {
   const _contract = await ethers.getContractFactory("Demo");
-  const demo = await _contract.deploy(1);
+  const demo = await _contract.deploy();
   await demo.waitForDeployment();
-  let tx1 = await demo.inc(1);
-
   let feedData = await ethers.provider.getFeeData();
-  let tx2 = await demo.inc(2, {
-    maxPriorityFeePerGas: feedData.maxPriorityFeePerGas * 5n,
+  let tx1 = await demo.set(1, {
+    maxPriorityFeePerGas: 1000000,
   });
 
-  let recipt = await tx2.wait();
-  console.log(recipt);
-  recipt = await tx1.wait();
-  console.log(recipt);
+  let tx2 = await demo.set(2, {
+    maxPriorityFeePerGas: 3000000,
+  });
+
+  let receipt2 = await tx2.wait();
+  console.log(receipt2);
+  let receipt1 = await tx1.wait();
+  console.log(receipt1);
+  console.log(await demo.tag());
+  console.log("tx1 block number:", receipt1.blockNumber);
+  console.log("tx2 block number:", receipt2.blockNumber);
 }
 execute();

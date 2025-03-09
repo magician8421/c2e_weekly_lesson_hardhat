@@ -2,13 +2,11 @@
 pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 contract Demo{
-    uint256 public i;
-    constructor(uint256 _i){
-        i=_i;
-    }
+    uint256 public tag;
+ 
 
-    function inc(uint tag) external{
+    function set(uint _tag) external{
+        tag=_tag;
         console.log(tag);
-        i++;
     }
 }

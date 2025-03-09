@@ -28,7 +28,7 @@ module.exports = {
     hardhat: {
       mining: {
         auto: false,
-        interval: 5000,
+        interval: 1000,
       },
     },
   },
