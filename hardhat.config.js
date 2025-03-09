@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@nomicfoundation/hardhat-verify");
+require("hardhat-gas-reporter");
 require("dotenv").config();
 
 const { ProxyAgent, setGlobalDispatcher } = require("undici");
