@@ -13,6 +13,7 @@ contract MapStorage{
     //
     constructor(){
         test[2]=4;
+        test[135]=200;
     }
 
    function queryMapSlot(uint key,uint slot) external pure returns(uint256 location){
