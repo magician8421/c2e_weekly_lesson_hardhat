@@ -1,9 +1,9 @@
 const hre = require("hardhat");
 async function deploy() {
   //V1版本工厂
-  const _UUPSV1 = await hre.ethers.getContractFactory("UUPSV1");
+  const _UUPSV1 = await hre.ethers.getContractFactory("BoxV1UUPS");
   //V2版本工厂
-  const _UUPSV2 = await hre.ethers.getContractFactory("UUPSV2");
+  const _UUPSV2 = await hre.ethers.getContractFactory("BoxV2UUPS");
 
   //通过V1版本部署代理
   const v1 = await hre.upgrades.deployProxy(_UUPSV1, [1], {

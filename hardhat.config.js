@@ -1,6 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@nomicfoundation/hardhat-verify");
 require("hardhat-gas-reporter");
+require("@openzeppelin/hardhat-upgrades");
 require("dotenv").config();
 
 const { ProxyAgent, setGlobalDispatcher } = require("undici");

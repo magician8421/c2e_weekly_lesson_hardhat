@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.27;
+pragma solidity 0.8.26;
 import "@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol";
 contract BoxV1UUPS is UUPSUpgradeable{
 
@@ -17,10 +17,6 @@ contract BoxV1UUPS is UUPSUpgradeable{
  
 }
 
-
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.27;
-import "@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol";
 contract BoxV2UUPS  is  UUPSUpgradeable {
 
     uint public  x;
