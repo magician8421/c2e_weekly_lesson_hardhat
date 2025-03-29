@@ -17,6 +17,9 @@ contract ArrayStorage{
 
     }
 
+    function getArraySlot(uint256 slot) external pure returns(uint256){
+        return uint256(keccak256(abi.encode(slot)));
+    }
     function retreiveSlotContent(uint256 index) external view returns(bytes32 content){
         assembly{
             content:=sload(index)
