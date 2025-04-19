@@ -3,7 +3,7 @@ pragma solidity ^0.8.26;
 import "hardhat/console.sol";
 contract PureView{
  
-     uint256 private _var;
+     uint256  _var;
 
     function showGlobalVar()  payable  external{
 
