@@ -6,7 +6,7 @@ contract Factory2{
     event ContractCreated(address indexed);
 
     function deployV2(uint256 salt) external {
-        bytes memory _bytes = abi.encodePacked(type(Demo).creationCode, abi.encode(uint256(300)));
+        bytes memory _bytes = abi.encodePacked(type(Demo2).creationCode, abi.encode(uint256(300)));
         
         address deployAddress;
         assembly {
@@ -21,7 +21,7 @@ contract Factory2{
         emit ContractCreated(deployAddress);
     }
     function deployV1(uint256 salt) external {
-      address _deployAddress=address(new Demo{salt:bytes32(salt)}(300));
+      address _deployAddress=address(new Demo2{salt:bytes32(salt)}(300));
       console.logAddress(_deployAddress);
       emit ContractCreated(_deployAddress);
     }
@@ -29,7 +29,7 @@ contract Factory2{
    function predict(uint256 salt) external view returns(address){
        bytes32 hash = keccak256(
             abi.encodePacked(
-                bytes1(0xff), address(this), salt, keccak256(abi.encodePacked(type(Demo).creationCode,abi.encode(300)))
+                bytes1(0xff), address(this), salt, keccak256(abi.encodePacked(type(Demo2).creationCode,abi.encode(300)))
             )
        ); 
        return  address(uint160(uint256(hash)));
@@ -41,7 +41,7 @@ contract Factory2{
 }
 
 
-contract Demo{
+contract Demo2{
     uint256 public i;
     constructor(uint256 _i){
         i=_i;

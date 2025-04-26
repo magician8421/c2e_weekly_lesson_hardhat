@@ -2,7 +2,7 @@
 pragma solidity 0.8.26;
 import "hardhat/console.sol";
 contract Factory{
-    event ContractCreated(address);
+    event ContractCreated( address indexed contractCreated);
     function deployWithNew() external {
         console.logAddress(address(new Demo(300)));
     }

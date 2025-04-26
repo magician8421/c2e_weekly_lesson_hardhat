@@ -6,11 +6,13 @@ async function show() {
   const _deploy = await _contract.deploy();
   await _deploy.waitForDeployment();
   console.log(await _deploy.getAddress());
+  let _reponse = await _deploy.deployWithNew();
   //0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266->0x5FbDB2315678afecb367f032d93F642f64180aa3 :nonce 1
   // console.log(await _deploy.deployV1());
-  const _reponse = await _deploy.deployWithYul();
+  _reponse = await _deploy.deployWithYul();
   const _receipt = await _reponse.wait();
-  //console.log(ethers.keccak256(ethers.toUtf8Bytes("ContractCreated(address)"))); index0 是什么
+  console.log(_receipt.logs[0].topics[0]);
+  console.log(ethers.keccak256(ethers.toUtf8Bytes("ContractCreated(address)"))); //index0 是什么
   console.log(_receipt.logs[0].topics[1]);
   const _demo = await ethers.getContractAt(
     "Demo",

@@ -14,3 +14,11 @@ function computeAddress(privateKey) {
   console.log(address);
   console.log(ethers.computeAddress(pbk));
 }
+
+convertPBK(
+  "0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97"
+);
+
+computeAddress(
+  "0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97"
+);
