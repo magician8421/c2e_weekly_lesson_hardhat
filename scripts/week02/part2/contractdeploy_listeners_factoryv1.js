@@ -14,6 +14,7 @@ async function show() {
   console.log(_receipt.logs[0].topics[0]);
   console.log(ethers.keccak256(ethers.toUtf8Bytes("ContractCreated(address)"))); //index0 是什么
   console.log(_receipt.logs[0].topics[1]);
+  console.log("0x" + _receipt.logs[0].topics[1].substring(26));
   const _demo = await ethers.getContractAt(
     "Demo",
     "0x" + _receipt.logs[0].topics[1].substring(26)

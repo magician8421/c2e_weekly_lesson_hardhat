@@ -15,7 +15,7 @@ async function show() {
     "Demo",
     "0x" + _receipt.logs[0].topics[1].substring(26)
   );
-  console.log(await _demo.a());
+  console.log(await _demo.i());
 }
 
 show();
