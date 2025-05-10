@@ -7,10 +7,9 @@ contract EstimateGasCost{
     function estimateGasCost(uint256 data) external {
         uint256 gasStart = gasleft();
         // Execute the operation that consumes gas
-        i++;
-        i=i*data;
+        i=i+data;
         for(uint j=0;j<i;j++){
-            
+
         }
         // ...
         uint256 gasSpent = gasStart - gasleft();
