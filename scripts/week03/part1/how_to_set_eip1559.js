@@ -5,7 +5,7 @@ const { ethers } = require("hardhat");
  */
 async function execute() {
   // await network.provider.send("evm_setAutomine", [false]);
-  const _contract = await ethers.getContractFactory("Demo");
+  const _contract = await ethers.getContractFactory("SimpleDemo");
   const demo = await _contract.deploy();
   //await ethers.provider.send("evm_mine", []);
   await demo.waitForDeployment();
