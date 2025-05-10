@@ -9,6 +9,9 @@ contract EstimateGasCost{
         // Execute the operation that consumes gas
         i++;
         i=i*data;
+        for(uint j=0;j<i;j++){
+            
+        }
         // ...
         uint256 gasSpent = gasStart - gasleft();
         uint256 gasFee= gasSpent * tx.gasprice;
